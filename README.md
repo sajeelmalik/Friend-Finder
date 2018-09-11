@@ -1,6 +1,6 @@
-# Friend Finder
+# [Friend Finder](https://friendsearcher2018.herokuapp.com/)
 
-DESCRIPTION
+Find your most suitable match, whether it be a friend or a potential romantic acquaintane! This full-stack site will take in results from multiple users' surveys, then compare their answers with those from other users. The app will then display the name and picture of the user with the best overall match.
 
 * Powered by Javascript, node.js, Express.js, and Bootstrap
 
@@ -8,14 +8,15 @@ DESCRIPTION
 
 ## Getting Started and Prerequisites
 
-Check out the deployed site here: [**Friend Finder**](https://nodejs.org/en/)!
+Check out the deployed site here: 
+[**Friend Finder**](https://friendsearcher2018.herokuapp.com/)!
 
 This is a full-stack application, so no need to download anything!
 
 ### Preview 
 <!-- take a picture of the image and add it into the readme  -->
 
-![Friend Finder](assets/preview.gif  "Friend Finder")
+![Friend Finder](./preview.gif  "Friend Finder")
 *An example of the survey and matching interface in action*
 
 ## Technology Used
@@ -24,9 +25,9 @@ This is a full-stack application, so no need to download anything!
 * **Javascript** - the primary scripting logic powering the game
 * **jQuery** - the robust DOM-oriented scripting library for Javascript
 * [**node.js**](https://nodejs.org/en/) - a versatile Javascript runtime environment that processes user inputs in terminal
-* [BootstrapCDN v4.1.0](https://getbootstrap.com/docs/4.1/getting-started/introduction/) - the open-source web framework utilized
+* [**BootstrapCDN v4.1.0**](https://getbootstrap.com/docs/4.1/getting-started/introduction/) - the open-source web framework utilized
 
-*Semantic UI was attempted in an initial rendering of this application. Since then, Bootstrap was utilized due to its breadth of documentation*
+*Semantic UI was attempted in an initial rendering of this application. Since then, Bootstrap has been utilized due to its breadth of documentation*
 * [**Semantic UI**](https://semantic-ui.com/) - a modern CSS design framework with more intuitive Javascript capabilities
 
 ## Node Packages Employed

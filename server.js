@@ -9,7 +9,7 @@
 // =============================================================
 var express = require("express");
 var bodyParser = require("body-parser");
-var path = require("path");
+var path = require("path"); //path is not expressly utilized in server.js any more, since the HTML routes have been modularized
 
 // Sets up the Express App
 // =============================================================
