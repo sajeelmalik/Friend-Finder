@@ -22,6 +22,7 @@ This is a full-stack application, so no need to download anything!
 
 * **HTML5, CSS3** 
 * **Javascript** - the primary scripting logic powering the game
+* **jQuery** - the robust DOM-oriented scripting library for Javascript
 * [**node.js**](https://nodejs.org/en/) - a versatile Javascript runtime environment that processes user inputs in terminal
 * [BootstrapCDN v4.1.0](https://getbootstrap.com/docs/4.1/getting-started/introduction/) - the open-source web framework utilized
 
@@ -30,11 +31,11 @@ This is a full-stack application, so no need to download anything!
 
 ## Node Packages Employed
 
-1. Express - 
+1. Express - unopinionated web framework for Node.js that constructs server logic and powers the API
 ``` require("Express"); ```
-2. Body Parser - 
+2. Body Parser - middleware technology for JSON formatting
 ``` require("body-parser"); ```
-3. Path - 
+3. Path - simplifies directories and filepaths through Node
 ``` require("path"); ```
 
 # Code Snippets

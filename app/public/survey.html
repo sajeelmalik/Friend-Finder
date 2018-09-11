@@ -62,13 +62,15 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">Name:</span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Mark Zuckerberg" aria-label="name" aria-describedby="basic-addon1" required>
+                    <input type="text" class="form-control" placeholder="Mark Zuckerberg" aria-label="name" aria-describedby="basic-addon1" id="username"
+                        required>
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">Image URL:</span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Link an image of you!" aria-label="image" aria-describedby="basic-addon1" required>
+                    <input type="text" class="form-control" placeholder="Link an image of you!" aria-label="image" aria-describedby="basic-addon1"
+                        id="userImage" required>
                 </div>
                 <footer class="blockquote-footer">Required</footer>
                 <br>
@@ -77,138 +79,250 @@
 
         </div>
         <br>
-        <div class="card">
+        <div class="card uk-animation-fade" id="survey" style="display:none">
             <div class="card-header">
                 <h3>Survey</h3>
             </div>
-            <div class="card-body">
+            <div class="card-body" uk-scrollspy="target: > h3, h4; cls:uk-animation-fade; delay: 200">
                 <h5 class="card-title">Complete the following questions to the best of your ability!</h5>
                 <hr class="uk-divider-icon uk-animation-scale-up">
                 <h3><strong>Question 1</strong></h3>
                 <h4>Your mind is always buzzing with unexplored ideas and plans.</h4>
-                <select class="chosen-select" id="q1">
-                    <option value=""></option>
-                    <option value="1">1 (Strongly Disagree)</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5 (Strongly Agree)</option>
-                </select>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <button class="btn btn-danger disabled">Strongly Disagree</button>
+                    <label class="btn btn-info">
+                        <input type="radio" name="options" value = "1" autocomplete="off"> 1
+                    </label>
+                    <label class="btn btn-info">
+                        <input type="radio" name="options" value = "2" autocomplete="off"> 2
+                    </label>
+                    <label class="btn btn-info active">
+                        <input type="radio" name="options" value = "3" autocomplete="off" checked> 3
+                    </label>
+                    <label class="btn btn-info">
+                        <input type="radio" name="options" value = "4" autocomplete="off"> 4
+                    </label>
+                    <label class="btn btn-info">
+                        <input type="radio" name="options" value = "5" autocomplete="off"> 5
+                    </label>
+                    <button class="btn btn-success disabled">Strongly Agree</button>
+                </div>
                 <hr>
                 <h3><strong>Question 2</strong></h3>
                 <h4>Generally speaking, you rely more on your experience than your imagination.</h4>
-                <select class="chosen-select" id="q2">
-                    <option value=""></option>
-                    <option value="1">1 (Strongly Disagree)</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5 (Strongly Agree)</option>
-                </select>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <button class="btn btn-danger disabled">Strongly Disagree</button>
+                        <label class="btn btn-info">
+                            <input type="radio" name="options" value = "1" autocomplete="off"> 1
+                        </label>
+                        <label class="btn btn-info">
+                            <input type="radio" name="options" value = "2" autocomplete="off"> 2
+                        </label>
+                        <label class="btn btn-info active">
+                            <input type="radio" name="options" value = "3" autocomplete="off" checked> 3
+                        </label>
+                        <label class="btn btn-info">
+                            <input type="radio" name="options" value = "4" autocomplete="off"> 4
+                        </label>
+                        <label class="btn btn-info">
+                            <input type="radio" name="options" value = "5" autocomplete="off"> 5
+                        </label>
+                        <button class="btn btn-success disabled">Strongly Agree</button>
+                    </div>
                 <hr>
 
 
                 <h3><strong>Question 3</strong></h3>
                 <h4>You find it easy to stay relaxed and focused even when there is some pressure.</h4>
-                <select class="chosen-select" id="q3">
-                    <option value=""></option>
-                    <option value="1">1 (Strongly Disagree)</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5 (Strongly Agree)</option>
-                </select>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <button class="btn btn-danger disabled">Strongly Disagree</button>
+                        <label class="btn btn-info">
+                            <input type="radio" name="options" value = "1" autocomplete="off"> 1
+                        </label>
+                        <label class="btn btn-info">
+                            <input type="radio" name="options" value = "2" autocomplete="off"> 2
+                        </label>
+                        <label class="btn btn-info active">
+                            <input type="radio" name="options" value = "3" autocomplete="off" checked> 3
+                        </label>
+                        <label class="btn btn-info">
+                            <input type="radio" name="options" value = "4" autocomplete="off"> 4
+                        </label>
+                        <label class="btn btn-info">
+                            <input type="radio" name="options" value = "5" autocomplete="off"> 5
+                        </label>
+                        <button class="btn btn-success disabled">Strongly Agree</button>
+                    </div>
 
                 <hr>
 
                 <h3><strong>Question 4</strong></h3>
                 <h4>You rarely do something just out of sheer curiosity.</h4>
-                <select class="chosen-select" id="q4">
-                    <option value=""></option>
-                    <option value="1">1 (Strongly Disagree)</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5 (Strongly Agree)</option>
-                </select>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <button class="btn btn-danger disabled">Strongly Disagree</button>
+                        <label class="btn btn-info">
+                            <input type="radio" name="options" value = "1" autocomplete="off"> 1
+                        </label>
+                        <label class="btn btn-info">
+                            <input type="radio" name="options" value = "2" autocomplete="off"> 2
+                        </label>
+                        <label class="btn btn-info active">
+                            <input type="radio" name="options" value = "3" autocomplete="off" checked> 3
+                        </label>
+                        <label class="btn btn-info">
+                            <input type="radio" name="options" value = "4" autocomplete="off"> 4
+                        </label>
+                        <label class="btn btn-info">
+                            <input type="radio" name="options" value = "5" autocomplete="off"> 5
+                        </label>
+                        <button class="btn btn-success disabled">Strongly Agree</button>
+                    </div>
 
                 <hr>
 
                 <h3><strong>Question 5</strong></h3>
                 <h4>People can rarely upset you.</h4>
-                <select class="chosen-select" id="q5">
-                    <option value=""></option>
-                    <option value="1">1 (Strongly Disagree)</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5 (Strongly Agree)</option>
-                </select>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <button class="btn btn-danger disabled">Strongly Disagree</button>
+                        <label class="btn btn-info">
+                            <input type="radio" name="options" value = "1" autocomplete="off"> 1
+                        </label>
+                        <label class="btn btn-info">
+                            <input type="radio" name="options" value = "2" autocomplete="off"> 2
+                        </label>
+                        <label class="btn btn-info active">
+                            <input type="radio" name="options" value = "3" autocomplete="off" checked> 3
+                        </label>
+                        <label class="btn btn-info">
+                            <input type="radio" name="options" value = "4" autocomplete="off"> 4
+                        </label>
+                        <label class="btn btn-info">
+                            <input type="radio" name="options" value = "5" autocomplete="off"> 5
+                        </label>
+                        <button class="btn btn-success disabled">Strongly Agree</button>
+                    </div>
 
                 <hr>
 
                 <h3><strong>Question 6</strong></h3>
                 <h4>It is often difficult for you to relate to other people’s feelings.</h4>
-                <select class="chosen-select" id="q6">
-                    <option value=""></option>
-                    <option value="1">1 (Strongly Disagree)</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5 (Strongly Agree)</option>
-                </select>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <button class="btn btn-danger disabled">Strongly Disagree</button>
+                        <label class="btn btn-info">
+                            <input type="radio" name="options" value = "1" autocomplete="off"> 1
+                        </label>
+                        <label class="btn btn-info">
+                            <input type="radio" name="options" value = "2" autocomplete="off"> 2
+                        </label>
+                        <label class="btn btn-info active">
+                            <input type="radio" name="options" value = "3" autocomplete="off" checked> 3
+                        </label>
+                        <label class="btn btn-info">
+                            <input type="radio" name="options" value = "4" autocomplete="off"> 4
+                        </label>
+                        <label class="btn btn-info">
+                            <input type="radio" name="options" value = "5" autocomplete="off"> 5
+                        </label>
+                        <button class="btn btn-success disabled">Strongly Agree</button>
+                    </div>
                 <hr>
 
 
                 <h3><strong>Question 7</strong></h3>
                 <h4>In a discussion, truth should be more important than people’s sensitivities.</h4>
-                <select class="chosen-select" id="q7">
-                    <option value=""></option>
-                    <option value="1">1 (Strongly Disagree)</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5 (Strongly Agree)</option>
-                </select>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <button class="btn btn-danger disabled">Strongly Disagree</button>
+                        <label class="btn btn-info">
+                            <input type="radio" name="options" value = "1" autocomplete="off"> 1
+                        </label>
+                        <label class="btn btn-info">
+                            <input type="radio" name="options" value = "2" autocomplete="off"> 2
+                        </label>
+                        <label class="btn btn-info active">
+                            <input type="radio" name="options" value = "3" autocomplete="off" checked> 3
+                        </label>
+                        <label class="btn btn-info">
+                            <input type="radio" name="options" value = "4" autocomplete="off"> 4
+                        </label>
+                        <label class="btn btn-info">
+                            <input type="radio" name="options" value = "5" autocomplete="off"> 5
+                        </label>
+                        <button class="btn btn-success disabled">Strongly Agree</button>
+                    </div>
                 <hr>
 
                 <h3><strong>Question 8</strong></h3>
                 <h4>You rarely get carried away by fantasies and ideas.</h4>
-                <select class="chosen-select" id="q8">
-                    <option value=""></option>
-                    <option value="1">1 (Strongly Disagree)</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5 (Strongly Agree)</option>
-                </select>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <button class="btn btn-danger disabled">Strongly Disagree</button>
+                        <label class="btn btn-info">
+                            <input type="radio" name="options" value = "1" autocomplete="off"> 1
+                        </label>
+                        <label class="btn btn-info">
+                            <input type="radio" name="options" value = "2" autocomplete="off"> 2
+                        </label>
+                        <label class="btn btn-info active">
+                            <input type="radio" name="options" value = "3" autocomplete="off" checked> 3
+                        </label>
+                        <label class="btn btn-info">
+                            <input type="radio" name="options" value = "4" autocomplete="off"> 4
+                        </label>
+                        <label class="btn btn-info">
+                            <input type="radio" name="options" value = "5" autocomplete="off"> 5
+                        </label>
+                        <button class="btn btn-success disabled">Strongly Agree</button>
+                    </div>
                 <hr>
 
                 <h3><strong>Question 9</strong></h3>
                 <h4>You think that everyone’s views should be respected regardless of whether they are supported by facts
                     or not.</h4>
-                <select class="chosen-select" id="q9">
-                    <option value=""></option>
-                    <option value="1">1 (Strongly Disagree)</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5 (Strongly Agree)</option>
-                </select>
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <button class="btn btn-danger disabled">Strongly Disagree</button>
+                            <label class="btn btn-info">
+                                <input type="radio" name="options" value = "1" autocomplete="off"> 1
+                            </label>
+                            <label class="btn btn-info">
+                                <input type="radio" name="options" value = "2" autocomplete="off"> 2
+                            </label>
+                            <label class="btn btn-info active">
+                                <input type="radio" name="options" value = "3" autocomplete="off" checked> 3
+                            </label>
+                            <label class="btn btn-info">
+                                <input type="radio" name="options" value = "4" autocomplete="off"> 4
+                            </label>
+                            <label class="btn btn-info">
+                                <input type="radio" name="options" value = "5" autocomplete="off"> 5
+                            </label>
+                            <button class="btn btn-success disabled">Strongly Agree</button>
+                        </div>
                 <hr>
 
                 <h3><strong>Question 10</strong></h3>
                 <h4>You feel more energetic after spending time with a group of people.</h4>
-                <select class="chosen-select" id="q10">
-                    <option value=""></option>
-                    <option value="1">1 (Strongly Disagree)</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5 (Strongly Agree)</option>
-                </select>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <button class="btn btn-danger disabled">Strongly Disagree</button>
+                        <label class="btn btn-info">
+                            <input type="radio" name="options" value = "1" autocomplete="off"> 1
+                        </label>
+                        <label class="btn btn-info">
+                            <input type="radio" name="options" value = "2" autocomplete="off"> 2
+                        </label>
+                        <label class="btn btn-info active">
+                            <input type="radio" name="options" value = "3" autocomplete="off" checked> 3
+                        </label>
+                        <label class="btn btn-info">
+                            <input type="radio" name="options" value = "4" autocomplete="off"> 4
+                        </label>
+                        <label class="btn btn-info">
+                            <input type="radio" name="options" value = "5" autocomplete="off"> 5
+                        </label>
+                        <button class="btn btn-success disabled">Strongly Agree</button>
+                    </div>
                 <br><br>
-                <button type="button" class="btn btn-outline-primary btn-large btn-block" id="surveyInfo">Find Friends!</button>
+                <button type="button" class="btn btn-outline-primary btn-large btn-block" id="surveyInfo" data-toggle="modal" data-target="#friendModal">Find
+                    Friends!
+                </button>
             </div>
 
         </div>
@@ -218,11 +332,11 @@
     </div>
 
     <!-- Modal for best match -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="friendModal" tabindex="-1" role="dialog" aria-labelledby="friendModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Here's your best match!</h5>
+                    <h5 class="modal-title" id="friendModalLabel">Here's your best match!</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -234,7 +348,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Decline</button>
-                    <button type="button" class="btn btn-success">Make Friends</button>
+                    <button type="button" class="btn btn-success" id="makeFriends">Make Friends</button>
                 </div>
             </div>
         </div>
@@ -242,6 +356,39 @@
 
     <script>
 
+
+        //on-click of the profile info, the survey appears and the user's name and photo are stored
+        $(document).on("click", "#profileInfo", function (event) {
+            //initiate a new user 
+            var user = {};
+
+            event.preventDefault();
+            // $("#survey").addClass("uk-animation-fade");
+            $("#survey").show();
+            user.name = $("#username").val().trim();
+            user.photo = $("#userImage").val().trim();
+            $("#profileInfo").addClass("disabled");
+
+            //prepare empty array for user scores that will be filled out on the survey area
+            user.scores = [];
+            console.log(user);
+        });
+
+        $(document).on("click", "#surveyInfo", function (event) {
+            event.preventDefault();
+
+
+
+            for (var i = 0; i < 10; i++) {
+                user.scores.push();
+            }
+
+            $.post("/api/friends/", user, function (response) {
+                $("#matchedProfile").attr("src", "");
+                $("#matchedName").text();
+                $("#matchedRating").text();
+            })
+        })
     </script>
 </body>
 
