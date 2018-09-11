@@ -12,8 +12,7 @@
         crossorigin="anonymous">
 
     <!-- Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
@@ -343,8 +342,8 @@
                 </div>
                 <div class="modal-body">
                     <img id="matchedProfile">
-                    <p>Name: <span id="matchedName"></span></p>
-                    <p>Compatibility Rating: <span id="matchedRating"></span></p>
+                    <h3>Name: <span id="matchedName"></span></h3>
+                    <h4>Compatibility Rating: <span id="matchedRating"></span></h4>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Decline</button>
@@ -354,10 +353,10 @@
         </div>
     </div>
 
-    <script>
+    <script type="text/javascript">
         //initiate a new user 
         var user = {};
-        
+
         var matchedPerson = "";
         var matchedImg = "";
         var rating = 0;
@@ -388,28 +387,36 @@
                 user.scores.push(choice);
             }
 
-            //initialize rating at 40 - the higest possible difference
+            //initialize rating at 40 - the highest possible difference
             rating = 40;
 
+            //calculates the individual absolute value difference between each of the user's inputs and each of the inputs of those already in the array. For this simple case, one could simply compare the total values of all 10 questions, but the implementation below leaves room for further updates in which individual questions are weighted more heavily
             $.get("/api/friends/", function (friends) {
-                friends.forEach(function(elem){
+                console.log(friends);
+                friends.forEach(function (elem) {
+                    console.log(elem);
                     var tempRating = 0;
-                    for (var i = 0; i < elem.scores.length; i++){
+                    for (var i = 0; i < elem.scores.length; i++) {
                         tempRating += Math.abs(elem.scores[i] - user.scores[i]);
                     }
-                    if(tempRating > rating){
+                    console.log(tempRating);
+
+                    //continually checks to see if we're receiving a better rating
+                    if (tempRating < rating) {
                         rating = tempRating;
                         matchedPerson = elem.name;
                         matchedImg = elem.photo;
                     }
                 })
+            }).then(function (response) {
+                $.post("/api/friends/", user, function (response) {
+                    $("#matchedProfile").attr("src", matchedImg);
+                    $("#matchedName").text(matchedPerson);
+                    $("#matchedRating").text(Math.ceil((40 - rating) / 40 *100) + "%");
+                })
             })
 
-            $.post("/api/friends/", user, function (response) {
-                $("#matchedProfile").attr("src", matchedImg);
-                $("#matchedName").text(matchedPerson);
-                $("#matchedRating").text(rating);
-            })
+
         })
     </script>
 </body>
