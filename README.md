@@ -16,7 +16,7 @@ This is a full-stack application, so no need to download anything!
 <!-- take a picture of the image and add it into the readme  -->
 
 ![Friend Finder](assets/preview.gif  "Friend Finder")
-*An example of the manager interface in action*
+*An example of the survey and matching interface in action*
 
 ## Technology Used
 
@@ -42,65 +42,75 @@ This is a full-stack application, so no need to download anything!
 <!-- put snippets of code inside ``` ``` so it will look like code -->
 <!-- if you want to put blockquotes use a > -->
 
-Node.js allows a diversity of interactions in the backend. Here, I initialize and outline the interface that allows the user to directly alter a connected database of product items. Two node packages, *inquirer* and *mysql*, operate in unison to allow the user to input the desired ID and query an existing database for that ID's existence. Then, the user's input is related to the existing "stock_quantity" attribute of that ID's product object, and it is updated dynamically.
+Express.js allows a diversity of interactions in the backend. I leveraged Express's capabilities of producing JSON responses based on user input to create a unique API for this application. The user can view all "friends" who have visited the app and successfully completed the survey by visiting the specific route, "/api/friends" outlined in the *get* method. Additionally, the user may *post* new content to the JSON.
 
 ```
-function addInventory() {
-    inquirer.prompt([
-        {
-            name: "item_id",
-            type: "input",
-            message: "What is the ID of the product you would like to restock?",
-            validate: function (value) {
-                if (isNaN(value) === false) {
-                    return true;
-                }
-                return false;
-            }
-        },
-        {
-            name: "addedQuantity",
-            type: "input",
-            message: "How many units would you like to add?",
-            validate: function (value) {
-                if (isNaN(value) === false) {
-                    return true;
-                }
+//API Routes to provide useful JSON responses 
 
-                return false;
-            }
-        }
-    ]).then(function (answer) {
-        // console.log(answer.item_id);
-        connection.query("SELECT * FROM products WHERE id = ?", [answer.item_id], function (err, res) {
+var friends = require("../data/friends");
 
-            var stock = res[0].stock_quantity;
-            var product = res[0].product_name;
-            var numAdded = parseInt(answer.addedQuantity);
-            if (err) throw err;
+module.exports = function (app) {
+    app.get("/api/friends", function (req, res) {
+        return res.json(friends);
+    })
 
+    app.post("/api/friends", function (req, res) {
 
-            //additional query to update stock accordingly
-            console.log(chalk.blue("\nUpdating " + product + " stock quantity...\n"));
-            connection.query(
-                "UPDATE products SET ? WHERE ?",
-                [
-                    {
-                        stock_quantity: stock + numAdded
-                    },
-                    {
-                        id: answer.item_id
-                    }
-                ],
-                function (err, res) {
-                    console.log(chalk.green(res.affectedRows + " products had their stock replenished!\n"));
-                    managerPrompt();
-                }
-            );
-        });
+        var newFriend = req.body;
+
+        //pushes the new friend object to the array of friends previously created
+        friends.push(newFriend);
+
+        return res.json(newFriend);
     });
-}
 
+
+```
+
+Here, we have our on-click functionality after submitting the survey. A user object, ```user = {} ``` has already been created and contains the name and image of the current surveyer. Now, each of the user's selections from the survey is cross-referenced against every other user in the "database" to assess which other user is a closest match to the surveyer!
+
+```
+$(document).on("click", "#surveyInfo", function (event) {
+            event.preventDefault();
+
+            user.scores = [];
+            //iterate through questions and obtain the values of each checked radio button. Here, it becomes clearer that radio buttons are not the most effective way to store this information - they're too complicated, irregular, and just DIRTY
+            for (var i = 1; i < 11; i++) {
+                var choice = parseInt($("input[type='radio'][name='question" + i + "']:checked").val());
+                user.scores.push(choice);
+            }
+
+            //initialize rating at 40 - the highest possible difference
+            rating = 40;
+
+            //calculates the individual absolute value difference between each of the user's inputs and each of the inputs of those already in the array. For this simple case, one could simply compare the total values of all 10 questions, but the implementation below leaves room for further updates in which individual questions are weighted more heavily
+            $.get("/api/friends/", function (friends) {
+                console.log(friends);
+                friends.forEach(function (elem) {
+                    console.log(elem);
+                    var tempRating = 0;
+                    for (var i = 0; i < elem.scores.length; i++) {
+                        tempRating += Math.abs(elem.scores[i] - user.scores[i]);
+                    }
+                    console.log(tempRating);
+
+                    //continually checks to see if we're receiving a better rating
+                    if (tempRating < rating) {
+                        rating = tempRating;
+                        matchedPerson = elem.name;
+                        matchedImg = elem.photo;
+                    }
+                })
+            }).then(function (res) {
+                $.post("/api/friends/", user, function (response) {
+                    $("#matchedProfile").attr("src", matchedImg);
+                    $("#matchedName").text(matchedPerson);
+                    $("#matchedRating").text(Math.ceil((40 - rating) / 40 * 100) + "%");
+                })
+            })
+
+
+        })
 ```
 
 # Learning Points
