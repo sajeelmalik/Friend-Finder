@@ -2,15 +2,21 @@
 
 //API Routes to provide useful JSON responses 
 
-app.get("/api/friends", function (req, res) {
-    return res.json(waitingList);
-})
+var friends = require("../data/friends");
 
-app.post("/api/friends", function (req, res) {
+module.exports = function (app) {
+    app.get("/api/friends", function (req, res) {
+        return res.json(friends);
+    })
 
-    var friend = req.body;
+    app.post("/api/friends", function (req, res) {
 
-    // logic
+        var newFriend = req.body;
 
-    return res.json(friend);
-});
+        //pushes the new friend object to the array of friends previously created
+        friends.push(newFriend);
+
+        return res.json(newFriend);
+    });
+
+}
