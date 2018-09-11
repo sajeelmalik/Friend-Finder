@@ -19,70 +19,89 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.14/css/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.14/js/uikit.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.14/js/uikit-icons.min.js"></script>
+
     <!-- Semantic UI  -->
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.3/dist/semantic.min.css">
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.3/dist/semantic.min.js"></script> -->
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+    <!-- Google Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Oswald:700|Droid+Serif:400,700italic" rel="stylesheet" type="text/css"
+    />
+
+    <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
-    <div class="ui container">
-        <h1>This is the survey page</h1>
 
-        <div class="ui star rating" data-rating="3" data-max-rating="5"></div>
+    <div class="jumbotron jumbotron-fluid uk-animation-slide-top-small">
+        <div class="container">
+            <h1 class="text-center">Compatibility Survey</h1>
+            <hr>
+            <p class="text-center">Fill in the survey to find your most suitable match!</p>
+        </div>
+    </div>
 
-        <div class="ui large steps">
-            <div class="active step">
-                <i class="user circle icon"></i>
-                <div class="content">
-                    <div class="title">Personal</div>
+    <div class="container">
+        <div class="card">
+            <div class="card-header"><h3>Profile Info</h3></div>
+            <div class="card-body">
+                <h5 class="card-title">Enter some basic information so we can get to know you!</h5>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Name:</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Mark Zuckerberg" aria-label="name" aria-describedby="basic-addon1">
                 </div>
-            </div>
-            <div class="step">
-                <i class="file alternate outline icon"></i>
-                <div class="content">
-                    <div class="title">Survey</div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Image URL:</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Link an image of you!" aria-label="image" aria-describedby="basic-addon1">
                 </div>
             </div>
         </div>
-        <button class="ui button">Follow</button>
-    </div>
 
+
+
+
+        
+    </div>
 
     <!-- Modal for best match -->
-    <div class="ui modal">
-        <i class="close icon"></i>
-        <div class="header">
-            Profile Picture
-        </div>
-        <div class="image content">
-            <div class="ui medium image">
-                <img src="/images/avatar/large/chris.jpg">
-            </div>
-            <div class="description">
-                <div class="ui header">We've auto-chosen a profile image for you.</div>
-                <p>We've grabbed the following image from the <a href="https://www.gravatar.com" target="_blank">gravatar</a>
-                    image associated with your registered e-mail address.</p>
-                <p>Is it okay to use this photo?</p>
-            </div>
-        </div>
-        <div class="actions">
-            <div class="ui black deny button">
-                Next Option
-            </div>
-            <div class="ui positive right labeled icon button">
-                Make the connection!
-                <i class="checkmark icon"></i>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Here's your best match!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img id="matchedProfile">
+                    <p>Name: <span id="matchedName"></span></p>
+                    <p>Compatibility Rating: <span id="matchedRating"></span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Decline</button>
+                    <button type="button" class="btn btn-success">Make Friends</button>
+                </div>
             </div>
         </div>
     </div>
+
     <script>
-        $(document).on("click", ".ui button", function (event) {
-            event.preventDefault();
-            $('.ui.modal')
-                .modal('show')
-                ;
-        })
+
     </script>
 </body>
 
