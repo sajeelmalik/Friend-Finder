@@ -2,14 +2,21 @@
 
 //HTML Server get routes 
 
-app.get("/", function(req, res){
-    res.sendFile(path.join(__dirname, "app/public/home.html"));
-})
+//import path to correctly direct to our HTML files
+var path = require("path");
 
-app.get("/tables", function(req, res){
-    res.sendFile(path.join(__dirname, "app/public/survey.html"));
-})
+module.exports = function (app) {
 
-app.get("/:anything", function(req, res){
-    res.sendFile(path.join(__dirname, "app/public/home.html"));
-})
+    app.get("/", function (req, res) {
+        res.sendFile(path.join(__dirname, "../public/home.html"));
+    })
+
+    app.get("/tables", function (req, res) {
+        res.sendFile(path.join(__dirname, "../public/survey.html"));
+    })
+
+    app.get("/:anything", function (req, res) {
+        res.sendFile(path.join(__dirname, "../public/home.html"));
+    })
+
+}
