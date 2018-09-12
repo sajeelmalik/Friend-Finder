@@ -1,6 +1,6 @@
 # [Friend Finder](https://friendsearcher2018.herokuapp.com/)
 
-Find your most suitable match, whether it be a friend or a potential romantic acquaintane! This full-stack site will take in results from multiple users' surveys, then compare their answers with those from other users. The app will then display the name and picture of the user with the best overall match.
+Find your most suitable match, whether it be a friend or a potential romantic acquaintance! This full-stack site will take in results from multiple users' surveys, then compare their answers with those from other users. The app will then display the name and picture of the user with the best overall match.
 
 * Powered by Javascript, node.js, Express.js, and Bootstrap
 
@@ -45,7 +45,7 @@ This is a full-stack application, so no need to download anything!
 
 Express.js allows a diversity of interactions in the backend. I leveraged Express's capabilities of producing JSON responses based on user input to create a unique API for this application. The user can view all "friends" who have visited the app and successfully completed the survey by visiting the specific route, "/api/friends" outlined in the *get* method. Additionally, the user may *post* new content to the JSON.
 
-```
+```Javascript
 //API Routes to provide useful JSON responses 
 
 var friends = require("../data/friends");
@@ -70,7 +70,7 @@ module.exports = function (app) {
 
 Here, we have our on-click functionality after submitting the survey. A user object, ```user = {} ``` has already been created and contains the name and image of the current surveyer. Now, each of the user's selections from the survey is cross-referenced against every other user in the "database" to assess which other user is a closest match to the surveyer!
 
-```
+```Javascript
 $(document).on("click", "#surveyInfo", function (event) {
             event.preventDefault();
 
@@ -123,6 +123,7 @@ $(document).on("click", "#surveyInfo", function (event) {
 ## Developers
 
 * **Sajeel Malik** - *Initial work* - [GitHub](https://github.com/sajeelmalik)
+ - *This was my first full-stack application.*
 
 ## License
 
