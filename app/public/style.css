@@ -19,4 +19,57 @@ p {
     font-size: 15px;
     line-height: 23px;
     margin: 0 0 23px 0;
+
+}
+
+a{
+    color: rgb(226, 140, 147);
+    font-weight: bold;
+}
+
+a:hover, a:active{
+    color: rgb(241, 66, 81);
+}
+
+body{
+    background-color: transparent;
+    opacity: 0.9;   
+}
+
+#home{
+    background: url("../../friends.jpg");
+    background-size: cover;
+    z-index: -1;
+}
+
+i{
+    color: #637889;
+}
+
+#toSurvey{
+    background-color: rgb(228, 118, 127);
+    border: 1px solid rgb(228, 103, 114);
+    color: white;
+}
+
+#toSurvey:hover{
+    background-color: rgb(241, 66, 81);
+    border: 1px solid rgb(238, 44, 60);
+    transition: 0.4s ease-out;
+    letter-spacing: 1px;
+}
+
+footer{
+    margin: auto;
+    text-align: center;
+}
+
+@media only screen and (max-width: 426px) {
+    .btn-group{
+        display:flex;
+        flex-direction: column-reverse;
+        align-content: center;
+        margin: auto;
+        width: 50%;
     }
+}

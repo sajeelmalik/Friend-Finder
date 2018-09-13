@@ -26,6 +26,7 @@ This is a full-stack application, so no need to download anything!
 * **jQuery** - the robust DOM-oriented scripting library for Javascript
 * [**node.js**](https://nodejs.org/en/) - a versatile Javascript runtime environment that processes user inputs in terminal
 * [**BootstrapCDN v4.1.0**](https://getbootstrap.com/docs/4.1/getting-started/introduction/) - the open-source web framework utilized
+* [**UIKit**](https://getuikit.com/docs/) - a secondary web design framework utilized for animations
 
 *Semantic UI was attempted in an initial rendering of this application. Since then, Bootstrap has been utilized due to its breadth of documentation*
 * [**Semantic UI**](https://semantic-ui.com/) - a modern CSS design framework with more intuitive Javascript capabilities
@@ -119,11 +120,13 @@ $(document).on("click", "#surveyInfo", function (event) {
 * Express.js is a comprehensive node package that simplifies server functionality
 * Modularization was key for this application. While the development and code of the application suffered slightly in terms of readability and simplicity, the fundamental logic was organized much more fruitfully to allow the potential for multiple segments of the app to be optimized simultaneously. 
 * I briefly attempted utilizing Semantic UI's design framework, but I quickly realized how difficult it would be to implement a completely new and unexplored user interface in such a short period of time. Still, Semantic UI offers very unique design and animation functionality for the explorative developer.
+* Keeping up with consistent inline commenting was something I prioritized during this project - it's extremely useful for other developers and engineers who may need to look at your code, especially for a modularized application like this one
 
 ## Developers
 
 * **Sajeel Malik** - *Initial work* - [GitHub](https://github.com/sajeelmalik)
- - *This was my first full-stack application.*
+
+*This was my first full-stack application.*
 
 ## License
 

@@ -44,7 +44,7 @@
 
     <div class="jumbotron jumbotron-fluid uk-animation-slide-top-small">
         <div class="container">
-            <h1 class="text-center">Compatibility Survey</h1>
+            <h1 class="text-center display-4">Compatibility Survey</h1>
             <hr>
             <p class="text-center">Fill in the survey to find your most suitable match!</p>
         </div>
@@ -73,7 +73,7 @@
                             id="userImage" required>
                     </div>
 
-                    <footer class="blockquote-footer">Required</footer>
+                    <footer class="blockquote-footer" id="requiredMessage">Required</footer>
                     <br>
                     <button type="button" class="btn btn-outline-primary btn-large btn-block" id="profileInfo">Submit</button>
                 </form>
@@ -373,7 +373,7 @@
                             </button>
                         </div>
                         <div class="row">
-                            <h2 class = "alert alert-success text-center">Compatibility Rating: <span id="matchedRating2"></span></h2>
+                            <h2 class="alert alert-success text-center">Compatibility Rating: <span id="matchedRating2"></span></h2>
                             <div class="col-lg-6">
                                 <img id="profile">
                                 <h3><span id="name"></span></h3>
@@ -402,18 +402,33 @@
         $(document).on("click", "#profileInfo", function (event) {
 
 
-            event.preventDefault();
-            // $("#survey").addClass("uk-animation-fade");
-            $("#survey").show();
-            user.name = $("#username").val().trim();
-            user.photo = $("#userImage").val().trim();
-            $("#profileInfo").addClass("disabled");
+            if ($("#username").val() && $("#userImage").val()) {
+                event.preventDefault();
+                // $("#survey").addClass("uk-animation-fade");
+                $("#survey").show();
+                user.name = $("#username").val().trim();
+                user.photo = $("#userImage").val().trim();
+                $("#profileInfo").addClass("disabled");
 
-            $("#profile").attr("src", user.photo);
-            $("#name").text(user.name);
-            //prepare empty array for user scores that will be filled out on the survey area
+                $("#profile").attr("src", user.photo);
+                $("#name").text(user.name);
+                //prepare empty array for user scores that will be filled out on the survey area
+                $("#requiredMessage").text("SUCCESS!");
+                $("#requiredMessage").addClass("alert alert-success");
+                $("#requiredMessage").css("font-size", "20px");
+                $("#requiredMessage").css("transition", "0.3s ease");
 
-            console.log(user);
+                console.log(user);
+            }
+            else {
+                $("#requiredMessage").text("You must input these fields to continue!");
+                $("#requiredMessage").addClass("alert alert-danger");
+                $("#requiredMessage").css("font-size", "20px");
+                $("#requiredMessage").css("transition", "0.3s ease");
+                
+
+            }
+
         });
 
         $(document).on("click", "#surveyInfo", function (event) {

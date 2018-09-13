@@ -16,10 +16,12 @@ var path = require("path"); //path is not expressly utilized in server.js any mo
 var app = express();
 var PORT = process.env.PORT || 3000;
 
+app.use(express.static("app/public"));
+// app.use(express.static("friends.jpg"));
+
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
 
 // ================================================================================
 // ROUTING
